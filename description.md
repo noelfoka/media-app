@@ -52,3 +52,8 @@ content: [
   ```
   and crete the diferents routes.
 
+### Forms
+   We creted `_auth` folder and `forms` folder inside the `_auth` folder and then created a `SigninForm.tsx` and `SignupForm.tsx to implement. And inside the `_auth` folder, we created `AuthLayout.tsx` to wrap `SigninForm.tsx` and `SignupForm.tsx`.
+    **Sign_in Form**
+    **Sign_up Form**
+
