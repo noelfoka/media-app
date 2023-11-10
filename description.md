@@ -20,7 +20,7 @@ npm run dev
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
-After installing the tailwind, you should see tailwind.`config.js` file; and inside this file we have this code:
+After installing the tailwind, you should see `tailwind.config.js` file; and inside this file we have this code:
 ```js
 /** @type {import('tailwindcss').Config} */
 
@@ -39,3 +39,16 @@ content: [
     "./src/**/*.{js, ts, jsx, tsx}"
   ]
 ```
+- **Router**
+
+  - Installation
+  ```bash
+  npm install react-router-dom
+  ```
+  - In `main.js` file, wrap `<App />` with `<BrowserRouter></BrowserRouter>`
+  - In `App.js` file, we:
+  ```typescript
+  import { Routes, Route } from 'react-router-dom';
+  ```
+  and crete the diferents routes.
+
