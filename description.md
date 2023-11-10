@@ -1,4 +1,4 @@
-## Crating of meadia-app using vite
+## Crating of meadia-app using vite and Tailwind
 
 ### getting started
 
