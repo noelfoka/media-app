@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,8 +14,12 @@ import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { SignupValidation } from "@/lib/validation"
+import { Loader } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const SignupForm = () => {
+  const isLoading = false;
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
@@ -101,7 +104,20 @@ const SignupForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="shad-button_primary">Submit</Button>
+          <Button type="submit" className="shad-button_primary mt-4">
+            {
+              isLoading ? (
+                <div className="flex-center gap-2">
+                  <Loader /> Loading...
+                </div>
+              ): "Sign Up"
+            }
+          </Button>
+
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Already have an account?
+            <Link to="/sign-in" className="text-primary-500"> Log in</Link>
+          </p>
         </form>
       </div>
     </Form>
