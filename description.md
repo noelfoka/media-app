@@ -128,4 +128,3 @@ export default AuthLayout
 Now this route working good.
 
     **Sign_in Form**
-
