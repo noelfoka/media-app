@@ -18,12 +18,14 @@ import { z } from "zod"
 import { SignupValidation } from "@/lib/validation"
 import { Loader } from "lucide-react"
 import { Link } from "react-router-dom"
-import { useCreateUserAccount } from "@/lib/react-query/QueriesAndMutations"
+import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/QueriesAndMutations"
 
 const SignupForm = () => {
   const { toast } = useToast();
 
   const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUserAccount();
+
+  const { mutateAsync: signInAccount, isloading: isSignIn } = useSignInAccount();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
@@ -47,7 +49,16 @@ const SignupForm = () => {
       })
     }
 
-    // const session = await signInAccount()
+    const session = await signInAccount({
+      email: values.email,
+      password: values.password,
+    })
+
+    if(!session) {
+      return toast({
+        title: "Sign In failed, plase try again",
+      })
+    }
   }
   return (
     <Form {...form}>
