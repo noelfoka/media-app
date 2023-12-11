@@ -1,4 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useToast } from "@/components/ui/use-toast"
+
 
 import {
   Form,
@@ -37,7 +39,9 @@ const SignupForm = () => {
     // Create the user
     const newUser = await createUserAccount(values);
 
-    console.log(newUser);
+    if (!newUser) {
+      return;
+    }
   }
   return (
     <Form {...form}>
