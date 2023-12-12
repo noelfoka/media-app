@@ -25,7 +25,7 @@ const SignupForm = () => {
 
   const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUserAccount();
 
-  const { mutateAsync: signInAccount, isloading: isSignIn } = useSignInAccount();
+  const { mutateAsync: signInAccount, isloading: isSigningIn } = useSignInAccount();
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
