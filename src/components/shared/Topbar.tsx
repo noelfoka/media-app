@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { useSignOutAccount } from '@/lib/react-query/QueriesAndMutations'
+import { useUserContext } from '@/context/AuthContext'
 
 const Topbar = () => {
     const { mutate: signOut, isSucces } = useSignOutAccount();
+    const navigate = useNavigate();
+    const { user } = useUserContext();
 
     useEffect(() => {
-        if (isSucces) {
-            window.location.href = '/login';
-        }
-    })
+        if (isSucces) navigate(0);
+    }, [isSucces]);
 
   return (
     <section className='tobbar'>
@@ -19,8 +20,8 @@ const Topbar = () => {
                 <img 
                     src='/assets/images/logos.png'
                     alt='Logo'
-                    width={60}
-                    height={60}
+                    width={50}
+                    height={50}
                     className="rounded-full"
                 />
             </Link>
@@ -30,11 +31,18 @@ const Topbar = () => {
                     <img 
                         src='/assets/images/logout.jpeg'
                         alt='logout'
-                        width={60}
-                        height={60}
+                        width={35}
+                        height={35}
                         className="rounded-full"
                     />
                 </Button>
+                <Link to={`/profile/${user.id}`} className='flex-center gap-3'>
+                    <img 
+                        src={user.imageUrl || 'assets/images/profile.png'}
+                        alt='profile'
+                        className='h-8 w-8 rounded-full'
+                    />
+                </Link>
             </div>
         </div>
     </section>
