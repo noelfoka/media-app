@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { useSignOutAccount } from '@/lib/react-query/QueriesAndMutations'
 import { useUserContext } from '@/context/AuthContext'
 
 const Topbar = () => {
-    const { mutate: signOut, isSucces } = useSignOutAccount();
+    const { mutate: signOut, isSuccess } = useSignOutAccount();
     const navigate = useNavigate();
     const { user } = useUserContext();
 
     useEffect(() => {
-        if (isSucces) navigate(0);
-    }, [isSucces]);
+        if (isSuccess) navigate(0);
+    }, [isSuccess]);
 
   return (
     <section className='tobbar'>
